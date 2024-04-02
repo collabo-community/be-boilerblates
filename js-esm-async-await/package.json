@@ -1,7 +1,7 @@
 {
   "name": "js-esm-async-await-backend-api-boilerplate",
   "version": "0.0.0",
-  "description": "Javascript (ES Module import/export syntax and async-await asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's Create-collabo-app project",
+  "description": "Javascript (ES Module import/export syntax and async-await asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's create-collabo-app project",
   "main": "src/server.js",
   "scripts": {
     "dev:local": "nodemon --exec babel-node src/server.js",

@@ -1,7 +1,7 @@
 {
   "name": "ts-esm-async-await-backend-api-boilerplate",
   "version": "0.0.0",
-  "description": "Typescript (ES Module import/export syntax and async-await asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's Create-collabo-app project",
+  "description": "Typescript (ES Module import/export syntax and async-await asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's create-collabo-app project",
   "main": "src/server.ts",
   "scripts": {
     "dev:local": "nodemon --exec ts-node src/server.ts",

@@ -1,5 +1,5 @@
 const { spawn } = require('child_process');
-const package_json = require('./package.json');
+const package_json = require('../../../package.json');
 const chalk = require('chalk');
 const dotenv = require('dotenv');
 
@@ -57,7 +57,8 @@ const watchEslint = () => {
 
 const server = (serverPort) => {
   try {
-    success(`\nnode-mongo (Commonjs Module) API boilerplate template v${package_json.version}`);
+    const description = package_json.description.replace(' generated via Collabo Community\'s create-collabo-app project', '');
+    success(`\nv${package_json.version} ${description}\n\nGenerated via Collabo Community's create-collabo-app project`);
     success(`\nServer running at ${serverPort}`);
   } catch (err) {
     error(`${{ err }}`);

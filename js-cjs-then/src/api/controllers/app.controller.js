@@ -1,4 +1,4 @@
-const { success } = require('../../../node-mongo-helpers');
+const { success } = require('../../lib/helpers');
 
 async function getAppController (req, res) {
   const message = 'App works!';
