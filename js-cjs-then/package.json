@@ -1,11 +1,11 @@
 {
-  "name": "node-mongo-api-boilerplate-template-esm",
-  "version": "1.0.0",
-  "description": "@code-collabo node-mongo API boilerplate template - es module",
+  "name": "js-cjs-then-backend-api-boilerplate",
+  "version": "0.0.0",
+  "description": "Javascript (Common js import/export syntax and .then() asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's Create-collabo-app project",
   "main": "src/server.js",
   "scripts": {
-    "dev:local": "nodemon --exec babel-node src/server.js",
-    "dev:atlas": "nodemon --exec babel-node src/server.js",
+    "dev:local": "nodemon --exec node src/server.js",
+    "dev:atlas": "nodemon --exec node src/server.js",
     "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch"
   },
@@ -20,11 +20,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.4",
-    "@babel/eslint-parser": "^7.21.3",
-    "@babel/node": "^7.20.7",
-    "@babel/preset-env": "^7.21.4",
     "chalk": "^4.1.0",
     "eslint": "^8.39.0",
     "eslint-plugin-import": "^2.27.5",

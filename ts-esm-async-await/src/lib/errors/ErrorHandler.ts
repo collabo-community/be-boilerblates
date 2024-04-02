@@ -1,6 +1,6 @@
 import { Response } from 'express';
 import { CustomErrorInterface, HttpCode } from './CustomError';
-import { error } from '../../../node-mongo-helpers';
+import { error } from '../../node-mongo-helpers';
 
 class ErrorHandler {
 

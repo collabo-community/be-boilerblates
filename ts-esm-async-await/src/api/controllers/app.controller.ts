@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { success } from '../../../node-mongo-helpers';
+import { success } from '../../node-mongo-helpers';
 
 export const getAppController = async (req: Request, res: Response) => {
   const message = 'App works!';
