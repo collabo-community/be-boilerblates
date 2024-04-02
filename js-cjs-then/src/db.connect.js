@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { connectionType, afterDBconnectSuccessful, connectToDBunsuccessful } = require('../node-mongo-helpers');
+const { connectionType, afterDBconnectSuccessful, connectToDBunsuccessful } = require('./lib/helpers');
 
 const mongooseConnect = async function(port) {
   try {

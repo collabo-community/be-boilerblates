@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { connectionType, afterDBconnectSuccessful, connectToDBunsuccessful } from './node-mongo-helpers';
+import { connectionType, afterDBconnectSuccessful, connectToDBunsuccessful } from './lib/helpers';
 
 const mongooseConnect = async (port: number | string) => {
   try {

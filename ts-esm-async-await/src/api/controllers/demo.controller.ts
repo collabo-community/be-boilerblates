@@ -7,7 +7,7 @@ import {
   updateOneDemoItemPropertyValueService,
   updateDemoItemPropertyValuesService,
 } from '../services/demo.service';
-import { success } from '../../node-mongo-helpers';
+import { success } from '../../lib/helpers';
 
 const routeName = 'demo';
 const item = `${routeName}-item`;
