@@ -1,2 +1,2 @@
-# Collabo Backend Api Boilerplates
+# @collabo-community/backend-api-boilerplates
 Collabo Backend Api Boilerplates
