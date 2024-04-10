@@ -60,8 +60,8 @@ export const npmRunPackageJsonScript = ({ script, currentWorkingDir } : { script
 
 export const server = (serverPort: number | string): void => {
   try {
-    const description: string = package_json.description.replace(' generated via Collabo Community\'s create-collabo-app project', '');
-    success(`\nv${package_json.version} ${description}\n\nGenerated via Collabo Community's create-collabo-app project`);
+    const description: string = package_json.description;
+    success(`\nv${package_json.version} ${description}`);
     success(`\nServer running at ${serverPort}`);
   } catch (err) {
     error(`${{ err }}`);
