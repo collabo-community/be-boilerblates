@@ -60,13 +60,14 @@ export const npmRunPackageJsonScript = ({ script, currentWorkingDir } : { script
 
 export const server = (serverPort: number | string): void => {
   try {
-    const description: string = package_json.description;
-    success(`\nv${package_json.version} ${description}`);
+    const description = package_json.description.split(' generated via')[0];
+ 
+    success(`\nv${package_json.version} ${description}\n\nGenerated via Collabo Community's create-collabo-app project`);
     success(`\nServer running at ${serverPort}`);
   } catch (err) {
-    error(`${{ err }}`);
+    error(`${err}`);
   }
-}
+ }
 
 const eslintAndServer = (serverPort: number | string) => {
   npmRunPackageJsonScript({ script: 'lint:watch', currentWorkingDir: './' });
