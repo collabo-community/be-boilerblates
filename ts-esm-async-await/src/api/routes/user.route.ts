@@ -23,7 +23,7 @@ router.post('/auth/login', loginOneUserController);
 router.get('/get-all', getAllUsersController);
 router.get('/auth/get-profile', verifyUserWithJWT, verifyUserRoles([UserRole.User]), getOneUserController);
 
-router.put('/auth/update-profile-one', verifyUserWithJWT, verifyUserRoles([UserRole.User]), updateOneUserPropertyValueController);
+router.put('/auth/update-profile-any', verifyUserWithJWT, verifyUserRoles([UserRole.User]), updateOneUserPropertyValueController);
 router.patch('/auth/update-profile', verifyUserWithJWT, verifyUserRoles([UserRole.User]), updateUserPropertyValuesController);
 
 router.delete('/auth/delete', verifyUserWithJWT, verifyUserRoles([UserRole.User]), deleteOneUserController);
