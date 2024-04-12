@@ -59,8 +59,9 @@ export const npmRunPackageJsonScript = ({ script, currentWorkingDir } : { script
 }
 
 export const server = (serverPort: number | string): void => {
-  try {
-    success(`\nv${package_json.version} ${package_json.description}`);
+  try { 
+    const description = package_json.description.substring(0,(package_json.description.length-60)) + '\n\n' + package_json.description.substring(126)[0].toUpperCase() + package_json.description.substring(127);
+    success(`\nv${package_json.version} ${description}`);
     success(`\nServer running at ${serverPort}`);
   } catch (err) {
     error(`${{ err }}`);
