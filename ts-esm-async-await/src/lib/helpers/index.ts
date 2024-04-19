@@ -58,9 +58,19 @@ export const npmRunPackageJsonScript = ({ script, currentWorkingDir } : { script
   spawn(npm, ['run', script], { cwd: currentWorkingDir, stdio: 'inherit' });
 }
 
+export const trimmedDescription = (sentence: string): string => {
+  sentence = package_json.description.slice(0,(package_json.description.length-60));
+  return sentence;
+}
+
+export const capitalizeSecondSentence = (letter: string): string => {
+  letter = package_json.description.slice(126)[0].toUpperCase() + package_json.description.slice(127);
+  return letter;
+}
+
 export const server = (serverPort: number | string): void => {
-  try { 
-    const description = package_json.description.substring(0,(package_json.description.length-60)) + '\n\n' + package_json.description.substring(126)[0].toUpperCase() + package_json.description.substring(127);
+  try {
+    const description: string = trimmedDescription(package_json.description) + '\n' + capitalizeSecondSentence(package_json.description);
     success(`\nv${package_json.version} ${description}`);
     success(`\nServer running at ${serverPort}`);
   } catch (err) {
