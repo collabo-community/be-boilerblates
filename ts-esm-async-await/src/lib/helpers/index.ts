@@ -58,19 +58,39 @@ export const npmRunPackageJsonScript = ({ script, currentWorkingDir } : { script
   spawn(npm, ['run', script], { cwd: currentWorkingDir, stdio: 'inherit' });
 }
 
-export const trimmedDescription = (sentence: string): string => {
-  sentence = package_json.description.slice(0,(package_json.description.length-60));
-  return sentence;
+// Some other helper functions
+export const capitalizeFirstLetter = (string: string) => {
+  return `${string[0].toUpperCase()}${string.slice(1)}`;
 }
 
-export const capitalizeSecondSentence = (letter: string): string => {
-  letter = package_json.description.slice(126)[0].toUpperCase() + package_json.description.slice(127);
-  return letter;
+export const extractPartOfStringFromPointAtoB = ({ string, fixedSplitPoint, startIndex, endIndex } : { string: string; fixedSplitPoint: number; startIndex?: number; endIndex?: number; }) => {
+  //--- startIndex is 0 if not specified, endIndex is stringLength - fixedSplitPoint if not specified
+  !startIndex ? startIndex = 0 : startIndex;
+  !endIndex ? endIndex = string.length - fixedSplitPoint : endIndex; // Positive of fixedSplitPoint used in the endIdex e.g. 60
+  //---------------------------------------------------------------
+  return string.slice(startIndex, endIndex);
+}
+
+export const extractLastPartOfStringStartingFromAnywhere = ({ string, splitPoint } : { string: string; splitPoint: number; }) => {
+  return string.slice(-splitPoint); // negative of splitPoint used here e.g. -60 (to make it count from back to front)
 }
 
 export const server = (serverPort: number | string): void => {
   try {
-    const description: string = trimmedDescription(package_json.description) + '\n' + capitalizeSecondSentence(package_json.description);
+    //---------------------------------
+    const splitPoint = 60;
+    const firstpart_string: string = extractPartOfStringFromPointAtoB({
+      string: package_json.description,
+      fixedSplitPoint: splitPoint,
+      // Note: specifiying startIndex and/or endIndex values here helps e.g. to extract part of string from anywhere in the middle
+    });
+    const lastpart_string: string = extractLastPartOfStringStartingFromAnywhere({
+      string: package_json.description,
+      splitPoint,
+    });
+    const capitalized_lastpart_string = capitalizeFirstLetter(lastpart_string);
+    //---------------------------------
+    const description = `${firstpart_string}\n\n${capitalized_lastpart_string}`;
     success(`\nv${package_json.version} ${description}`);
     success(`\nServer running at ${serverPort}`);
   } catch (err) {
