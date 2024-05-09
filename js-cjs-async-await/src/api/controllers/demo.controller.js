@@ -42,7 +42,7 @@ const getDemoItemsController = async (req, res) => {
 
 const createDemoItemController = async (req, res) => {
   try {
-    const doc = await createDemoItemService(req.body);
+    const doc = await createDemoItemService(req);
     response = {
       message: `${item} created successfully!`,
       newItem: {
