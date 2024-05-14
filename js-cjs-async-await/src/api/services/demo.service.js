@@ -7,7 +7,7 @@ const getDemoItemsService = async () => {
   return query;
 };
 
-const createDemoItemService = async (requestBody) => {
+const createDemoItemService = async function(requestBody) {
   const demo = new Demo({
     name: requestBody.name,
     age: requestBody.age,
@@ -17,17 +17,17 @@ const createDemoItemService = async (requestBody) => {
 };
 
 
-const getOneDemoItemService = async (paramsId) => {
+const getOneDemoItemService = async function(paramsId) {
   const query = Demo.findById(paramsId).select('_id name age').exec();
   return query;
 };
 
-const deleteDemoItemService = async (paramsId) => {
+const deleteDemoItemService = async function(paramsId) {
   const query = await Demo.deleteOne({ _id: paramsId }).exec();
   return query;
 };
 
-const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
+const updateOneDemoItemPropertyValueService = async function(paramsId, requestBody) {
   const updateOps = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
@@ -36,7 +36,7 @@ const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
   return query;
 };
 
-const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
+const updateDemoItemPropertyValuesService = async function(paramsId, requestBody) {
   const resetItem = {
     name: requestBody.name,
     age: requestBody.age,
