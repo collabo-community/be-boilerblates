@@ -2,7 +2,7 @@ const Demo = require('../models/demo.model');
 
 /* eslint-disable no-extra-semi */ // Note: only cjs api template needs this particular eslint comment
 
-const getDemoItemsService = async () => {
+const getDemoItemsService = async function() {
   const query = await Demo.find().select('_id name age').exec();
   return query;
 };
