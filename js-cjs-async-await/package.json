@@ -1,7 +1,7 @@
 {
-  "name": "js-cjs-then-backend-api-boilerplate",
+  "name": "js-cjs-async-await-backend-api-boilerplate",
   "version": "0.0.0",
-  "description": "Javascript (Common js import/export syntax and .then() asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's create-collabo-app project",
+  "description": "Javascript (Common js import/export syntax and async-await asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's create-collabo-app project",
   "main": "src/server.js",
   "scripts": {
     "dev:local": "nodemon --exec node src/server.js",

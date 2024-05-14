@@ -2,12 +2,12 @@ const Demo = require('../models/demo.model');
 
 /* eslint-disable no-extra-semi */ // Note: only cjs api template needs this particular eslint comment
 
-exports.getDemoItemsService = async () => {
+const getDemoItemsService = async () => {
   const query = await Demo.find().select('_id name age').exec();
   return query;
 };
 
-exports.createDemoItemService = async (requestBody) => {
+const createDemoItemService = async (requestBody) => {
   const demo = new Demo({
     name: requestBody.name,
     age: requestBody.age,
@@ -17,17 +17,17 @@ exports.createDemoItemService = async (requestBody) => {
 };
 
 
-exports.getOneDemoItemService = async (paramsId) => {
+const getOneDemoItemService = async (paramsId) => {
   const query = Demo.findById(paramsId).select('_id name age').exec();
   return query;
 };
 
-exports.deleteDemoItemService = async (paramsId) => {
+const deleteDemoItemService = async (paramsId) => {
   const query = await Demo.deleteOne({ _id: paramsId }).exec();
   return query;
 };
 
-exports.updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
+const updateOneDemoItemPropertyValueService = async (paramsId, requestBody) => {
   const updateOps = {};
   for (const ops of requestBody) {
     updateOps[ops.propName] = ops.value;
@@ -36,7 +36,7 @@ exports.updateOneDemoItemPropertyValueService = async (paramsId, requestBody) =>
   return query;
 };
 
-exports.updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
+const updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
   const resetItem = {
     name: requestBody.name,
     age: requestBody.age,
@@ -45,11 +45,11 @@ exports.updateDemoItemPropertyValuesService = async (paramsId, requestBody) => {
   return query;
 };
 
-// module.exports = {
-//   getDemoItemsService,
-//   createDemoItemService,
-//   getOneDemoItemService,
-//   deleteDemoItemService,
-//   updateOneDemoItemPropertyValueService,
-//   updateDemoItemPropertyValuesService,
-// };
+ module.exports = {
+  getDemoItemsService,
+  createDemoItemService,
+  getOneDemoItemService,
+  deleteDemoItemService,
+  updateOneDemoItemPropertyValueService,
+  updateDemoItemPropertyValuesService,
+ };
