@@ -13,7 +13,7 @@ const item = `${routeName}-item`;
 
 let response = {};
 
-const getDemoItemsController = async (req, res) => {
+const getDemoItemsController = async function(req, res) {
   try {
     const docs = await getDemoItemsService();
     response = {
@@ -40,7 +40,7 @@ const getDemoItemsController = async (req, res) => {
   }
 };
 
-const createDemoItemController = async (req, res) => {
+const createDemoItemController = async function(req, res) {
   try {
     const doc = await createDemoItemService(req.body);
     response = {
@@ -65,7 +65,7 @@ const createDemoItemController = async (req, res) => {
   }
 };
 
-const getOneDemoItemController = async (req, res) => {
+const getOneDemoItemController = async function(req, res) {
   try {
     const doc = await getOneDemoItemService(req.params.demoId);
     if (doc) {
@@ -96,10 +96,9 @@ const getOneDemoItemController = async (req, res) => {
   }
 };
 
-const deleteDemoItemController = function (req, res) {
-  const id = req.params.demoId;
-  deleteDemoItemService(id)
-  .then(() => {
+const deleteDemoItemController = async function(req, res) {
+  try {
+    await deleteDemoItemService(req.params.demoId);
     response = {
       message: `${item} deleted successfully!`,
       request: {
@@ -114,17 +113,16 @@ const deleteDemoItemController = function (req, res) {
     }
     success(`${item} DELETED successfully!`);
     return res.status(200).json(response);
-  })
-  .catch((err) => {
+  } catch (err) {
     error(`Error deleting ${item}: ${err}`);
     res.status(500).json({
       message: `Error deleting ${item}`,
       error: `${err}`,
     });
-  });
+  }
 };
 
-const updateOneDemoItemPropertyValueController = async (req, res) => {
+const updateOneDemoItemPropertyValueController = async function(req, res) {
   try {
     const id = req.params.demoId;
     await updateOneDemoItemPropertyValueService(id, req.body)
@@ -147,7 +145,7 @@ const updateOneDemoItemPropertyValueController = async (req, res) => {
   }
 };
 
-const updateDemoItemPropertyValuesController = async (req, res) => {
+const updateDemoItemPropertyValuesController = async function(req, res) {
   try {
     const id = req.params.id;
     await updateDemoItemPropertyValuesService(id, req.body);
