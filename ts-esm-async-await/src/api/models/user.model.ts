@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 export enum UserRole {
-  ADMIN = 0,
-  USER = 1,
+  Admin = 'admin',
+  User = 'user',
 }
 
 export interface UserDocument extends mongoose.Document {
@@ -11,16 +11,25 @@ export interface UserDocument extends mongoose.Document {
   username: string;
   email: string;
   password: string;
-  role: number;
+  role: UserRole;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const collectionName = 'user';
 
 const UserSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
+  username: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true,
+    match: [
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      "please provide valid email",
+    ]},
   password: { type: String, required: true },
-  role: { type: Number, default: UserRole.USER},
+  role: { type: String, required: true, default: UserRole.User}
+},
+{
+  timestamps: true,
 });
 
 UserSchema.pre('save', async function(next){

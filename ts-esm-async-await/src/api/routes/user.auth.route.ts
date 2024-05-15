@@ -1,12 +1,12 @@
 import express, { IRouter } from 'express';
 import {
-  signupUser,
-  loginUser,
+  signUpOneUserController,
+  loginOneUserController,
 } from '../controllers/user.auth.controller';
 
 const router: IRouter = express.Router();
 
-router.post('/signup', signupUser);
-router.post('/login', loginUser);
+router.post('/signup', signUpOneUserController);
+router.post('/login', loginOneUserController);
 
 export { router };

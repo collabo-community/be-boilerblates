@@ -9,7 +9,7 @@ import { notFoundErr } from './lib/errors/Errors';
 import { router as appRouter } from './api/routes/app.route';
 import { router as demoRouter } from './api/routes/demo.route';
 import { router as userAuthRouter } from './api/routes/user.auth.route';
-import { router as userRouter } from './api/routes/user.route';
+import { router as userRouter } from './api/routes/user.route'
 import { configurePassport } from './api/passport-auth-config/passport.config';
 
 dotenv.config();

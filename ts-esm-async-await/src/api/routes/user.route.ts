@@ -2,16 +2,26 @@ import express, { IRouter } from 'express';
 import {
   getAllUsersController,
   getOneUserController,
-  deleteAllUsersController,
   deleteOneUserController,
+  updateOneUserPropertyValueController,
+  updateUserPropertyValuesController,
+  deleteAllUserController,
 } from '../controllers/user.controller';
-import { authenticateWithJwt } from '../middleware/auth.middleware';
+import { UserRole } from '../models/user.model';
+import { authenticateUserWithJWT, authorizeByUserRoles } from '../middleware/auth.middleware';
 
 const router: IRouter = express.Router();
 
 router.get('/', getAllUsersController);
-router.get('/profile', authenticateWithJwt, getOneUserController);
-router.delete('/', deleteAllUsersController);
-router.delete('/profile', authenticateWithJwt, deleteOneUserController);
+router.get('/get-properties', authenticateUserWithJWT, authorizeByUserRoles([UserRole.User]), getOneUserController);
+
+router.patch('/update-any-property', authenticateUserWithJWT, authorizeByUserRoles([UserRole.User]), updateOneUserPropertyValueController);
+router.put('/update-properties', authenticateUserWithJWT, authorizeByUserRoles([UserRole.User]), updateUserPropertyValuesController);
+
+router.delete('/delete', authenticateUserWithJWT, authorizeByUserRoles([UserRole.User]), deleteOneUserController);
+
+//-----------------------------------------------------//
+router.delete('/', deleteAllUserController);
+//-----------------------------------------------------//
 
 export { router };
