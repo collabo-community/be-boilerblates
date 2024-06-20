@@ -1,0 +1,29 @@
+{
+  "name": "js-cjs-async-await-backend-api-boilerplate",
+  "version": "0.0.0",
+  "description": "Javascript (Common js import/export syntax and async-await asynchronous code handing method) Backend API boilerplate template generated via Collabo Community's create-collabo-app project",
+  "main": "src/server.js",
+  "scripts": {
+    "dev:local": "nodemon --exec node src/server.js",
+    "dev:atlas": "nodemon --exec node src/server.js",
+    "lint": "esw src --color",
+    "lint:watch": "npm run lint -- --watch"
+  },
+  "author": "Obiagba Mary",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-watch": "^8.0.0",
+    "nodemon": "^2.0.22"
+  }
+}
