@@ -2,7 +2,7 @@ import { badRequestErr, notFoundErr } from '../../lib/errors/Errors';
 import { UserDocument, UserModel as User } from '../models/user.model';
 
 
-//---------------------- AUTHENTICATION (SIGNUP) -------------------------------//
+//---------------------- CREATE USER AUTHENTICATION (SIGNUP) -------------------------------//
 export const signUpOneUserService = async (requestBody: UserDocument): Promise<UserDocument> => {
   const user = new User({
     username: requestBody.username,
