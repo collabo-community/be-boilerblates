@@ -18,7 +18,7 @@ router.get('/get-properties', authenticateUserWithJWT, authorizeByUserRoles([Use
 router.patch('/update-any-property', authenticateUserWithJWT, authorizeByUserRoles([UserRole.User]), updateOneUserPropertyValueController);
 router.put('/update-properties', authenticateUserWithJWT, authorizeByUserRoles([UserRole.User]), updateUserPropertyValuesController);
 
-router.delete('/delete', authenticateUserWithJWT, authorizeByUserRoles([UserRole.User]), deleteOneUserController);
+router.delete('/delete', authenticateUserWithJWT, authorizeByUserRoles([UserRole.Admin]), deleteOneUserController);
 
 //-----------------------------------------------------//
 router.delete('/', deleteAllUserController);

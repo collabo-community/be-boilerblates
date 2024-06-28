@@ -14,35 +14,37 @@ import { Payload, ReqUser } from '../../types';
 
 
 export const authenticateUserWithJWT = async (req: ReqUser, res: Response, next: NextFunction) => {
-  // check header if it starts with bearer
-  const reqAuthorizationHeader = req.headers.authorization;
-
-  if (!reqAuthorizationHeader || !reqAuthorizationHeader.startsWith("Bearer ")) {
-    unAuthorizedErr("User could not be verified because authorization header bearer not found");
+  try {
+    // check header if it starts with bearer
+    const reqAuthorizationHeader = req.headers.authorization;
+    if (!reqAuthorizationHeader || !reqAuthorizationHeader.startsWith("Bearer ")) {
+      unAuthorizedErr("User could not be verified because authorization header bearer not found");
+    }
+    const userToken = reqAuthorizationHeader.split(" ")[1];
+    const decoded = jwt.verify(userToken, `${process.env.JWT_SECRET}`);
+    const payload = decoded as Payload;
+    const { _id, username, role } = payload;
+    req.user = { _id: _id, username: username, role: role };
+    return next();
+    
+  } catch (err) {
+    next(err);
   }
-
-  const userToken = reqAuthorizationHeader.split(" ")[1];
-
-  const decoded = jwt.verify(userToken, `${process.env.JWT_SECRET}`);
-  const payload = decoded as Payload;
-  const { _id, username, role } = payload;
-
-  req.user = { _id: _id, username: username, role: role };
-
-  return next();
 }
 
 
 export const authorizeByUserRoles = (allowedRoles: UserRole[]) => {
   return (req: ReqUser, res: Response, next: NextFunction) => {
-    const { role } = req.user;
-
-    const roleIsVerified = allowedRoles.includes(role);
-
-    if (roleIsVerified) {
-      return next();
+    try {
+      const { role } = req.user;
+      const roleIsVerified = allowedRoles.includes(role);
+      if (roleIsVerified) {
+        return next();
+      }
+      unAuthorizedErr(`only [${allowedRoles}] have access to this route`);
+      
+    } catch (err) {
+      next(err);
     }
-
-    unAuthorizedErr(`only [${allowedRoles}] have access to this route`);
   }
 }
