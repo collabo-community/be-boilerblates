@@ -1,6 +1,6 @@
 {
-  "projectName": "node-mongo-api-boilerplate-templates",
-  "projectOwner": "code-collabo",
+  "projectName": "backend-api-boilerplates",
+  "projectOwner": "collabo-community",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -36,7 +36,7 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/70102539?v=4",
       "profile": "https://www.blessingolaleye.xyz/",
       "contributions": [
-        "doc"
+        "code"
       ]
     },
     {
@@ -46,15 +46,6 @@
       "profile": "https://github.com/Ifycode",
       "contributions": [
         "code"
-      ]
-    },
-    {
-      "login": "all-contributors",
-      "name": "All Contributors",
-      "avatar_url": "https://avatars.githubusercontent.com/u/46410174?v=4",
-      "profile": "https://allcontributors.org",
-      "contributions": [
-        "infra"
       ]
     }
   ],
