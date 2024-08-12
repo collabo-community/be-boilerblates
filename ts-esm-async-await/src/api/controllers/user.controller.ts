@@ -26,8 +26,8 @@ export const getAllUsersController = async (req: Request, res: Response, next: N
         users: users.map(user => {
           return {
             _id: user._id,
-            username: user.username,
             email: user.email,
+            email_verified: user.email_verified,
             role: user.role,
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,
@@ -52,8 +52,8 @@ export const getOneUserController = async (req: ReqUser, res: Response, next: Ne
       data: {
         user: {
           _id: user._id,
-          username: user.username,
           email: user.email,
+          email_verified: user.email_verified,
           role: user.role,
           createdAt: user.createdAt,
           updatedAt: user.updatedAt,

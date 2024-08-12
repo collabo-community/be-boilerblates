@@ -1,7 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import {
-  signUpOneUserService,
-} from '../services/user.service';
 import { success } from '../../lib/helpers';
 import passport from 'passport';
 import { UserDocument } from '../models/user.model';
@@ -16,22 +13,26 @@ let response: { [key: string]: unknown } = {};
 
 //---------------------- AUTHENTICATION (SIGNUP AND LOGIN) -------------------------------//
 export const signUpOneUserController = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const user = await signUpOneUserService(req.body);
+  passport.authenticate('local-signup', {session: false}, 
+    (err: Error, user: UserDocument) => {
+    try {
+      if (err) {
+        throw err;
+      }
 
-    const token = jwt.sign(
-      {_id: user._id, username: user.username, role: user.role},
-      process.env.JWT_SECRET,
-      {expiresIn: process.env.JWT_LIFETIME}
-    );
+      const token = jwt.sign(
+        {_id: user._id, email: user.email, role: user.role},
+        process.env.JWT_SECRET,
+        {expiresIn: process.env.JWT_LIFETIME}
+      );
 
-    response = {
+      response = {
       success: true,
       data: {
         user: {
           _id: user._id,
-          username: user.username,
           email: user.email,
+          email_verified: user.email_verified,
           role: user.role,
           createdAt: user.createdAt,
           updatedAt: user.updatedAt,
@@ -43,14 +44,15 @@ export const signUpOneUserController = async (req: Request, res: Response, next:
     success(`SUCCESS: User registration successfull`);
     return res.status(201).json(response);
 
-  } catch (err) {
-    next(err);
-  }
+    } catch (err) {
+      next(err);
+    }
+  }) (req, res, next);
 }
 
 
 export const loginOneUserController = async (req: Request, res: Response, next: NextFunction) => {
-  passport.authenticate('local', {session: false}, 
+  passport.authenticate('local-login', {session: false}, 
     (err: Error, user: UserDocument) => {
     try {
       if (err) {
@@ -58,7 +60,7 @@ export const loginOneUserController = async (req: Request, res: Response, next: 
       }
 
       const token = jwt.sign(
-        {_id: user._id, username: user.username, role: user.role},
+        {_id: user._id, email: user.email, role: user.role},
         process.env.JWT_SECRET,
         {expiresIn: process.env.JWT_LIFETIME}
       );

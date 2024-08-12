@@ -4,9 +4,9 @@ import { UserDocument, UserRole } from "../api/models/user.model";
 export interface ReqUser extends Request {
   user?: {
     _id?: string;
-    username?: string;
+    email?: string;
     role?: UserRole;
   }
 }
 
-export type Payload = Pick<UserDocument, "_id" | "username" | "role">;
+export type Payload = Pick<UserDocument, "_id" | "email" | "role">;

@@ -1,20 +1,6 @@
 import { badRequestErr, notFoundErr } from '../../lib/errors/Errors';
 import { UserDocument, UserModel as User } from '../models/user.model';
 
-
-//---------------------- CREATE USER AUTHENTICATION (SIGNUP) -------------------------------//
-export const signUpOneUserService = async (requestBody: UserDocument): Promise<UserDocument> => {
-  const user = new User({
-    username: requestBody.username,
-    email: requestBody.email,
-    password: requestBody.password,
-  });
-  const save = await user.save();
-  return save;
-};
-//------------------------------------------------------------------------------------------//
-
-
 export const getAllUsersService = async () => {
   const query = await User.find().exec();
   return query;
@@ -59,7 +45,6 @@ export const updateUserPropertyValuesService = async (paramsId: string, requestB
     notFoundErr('No record found for provided ID');
   }
 
-  query.username = requestBody.username;
   query.email = requestBody.email;
   query.password = requestBody.password;
 

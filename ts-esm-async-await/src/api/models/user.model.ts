@@ -8,8 +8,8 @@ export enum UserRole {
 
 export interface UserDocument extends mongoose.Document {
   _id?: string;
-  username: string;
   email: string;
+  email_verified: boolean;
   password: string;
   role: UserRole;
   createdAt?: Date;
@@ -19,12 +19,13 @@ export interface UserDocument extends mongoose.Document {
 const collectionName = 'user';
 
 const UserSchema = new mongoose.Schema({
-  username: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true,
     match: [
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       "please provide valid email",
-    ]},
+    ]
+  },
+  email_verified: { type: Boolean, required:true, default: false},
   password: { type: String, required: true },
   role: { type: String, required: true, default: UserRole.User}
 },

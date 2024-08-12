@@ -4,10 +4,10 @@ import bcrypt from 'bcrypt';
 import { DoneCallback } from 'passport';
 import { badRequestErr } from '../../../lib/errors/Errors';
 
-export const localStrategy = new Strategy(
+export const localLoginStrategy = new Strategy(
   {
     usernameField: 'email',
-    passwordField: 'password'
+    passwordField: 'password',
   },
   async (email: string, password: string, done: DoneCallback)=>{
     try {

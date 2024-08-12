@@ -24,8 +24,8 @@ export const authenticateUserWithJWT = (req: ReqUser, res: Response, next: NextF
         if (!payload) {
           unAuthorizedErr("[UNAUTHORIZED] Unknown User Trying to Access This Route\nRedirecting To Login Page")
         }
-        const { _id, username, role} = payload;
-        req.user = { _id: _id, username: username, role: role}; // replace the req.user parameter with the payload
+        const { _id, email, role} = payload;
+        req.user = { _id: _id, email: email, role: role}; // replace the req.user parameter with the payload
         return next();
         
       } catch (err) {
@@ -49,8 +49,5 @@ export const authorizeByUserRoles = (allowedRoles: UserRole[]) => {
     } catch (err) {
       next(err)
     }
-      
-
-    
   }
 }
