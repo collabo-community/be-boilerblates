@@ -8,7 +8,9 @@ import { CustomErrorInterface } from './lib/errors/CustomError';
 import { notFoundErr } from './lib/errors/Errors';
 import { router as appRouter } from './api/routes/app.route';
 import { router as demoRouter } from './api/routes/demo.route';
-import { configurePassport } from './api/passport-auth-config/passport.config';
+import { router as authRouter } from './api/routes/auth.route';
+import { router as userRouter } from './api/routes/user.route';
+import { configurePassport } from './api/passport-auth-config/passport.auth.config';
 
 dotenv.config();
 
@@ -25,6 +27,8 @@ configurePassport(app);
 //====== Use Routers =======
 app.use('/', appRouter);
 app.use('/demo', demoRouter);
+app.use('/auth', authRouter);
+app.use('/user', userRouter);
 //==========================
 
 
