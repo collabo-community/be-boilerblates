@@ -8,6 +8,7 @@ import { CustomErrorInterface } from './lib/errors/CustomError';
 import { notFoundErr } from './lib/errors/Errors';
 import { router as appRouter } from './api/routes/app.route';
 import { router as demoRouter } from './api/routes/demo.route';
+import { configurePassport } from './api/passport-auth-config/passport.config';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 app.use(cors({ origin: [`http://localhost:${process.env.CLIENT_APP_PORT}`, `${process.env.CLIENT_APP_URL}`] }));
+configurePassport(app);
 
 //====== Use Routers =======
 app.use('/', appRouter);
