@@ -12,7 +12,7 @@ export const googleStrategy = new Strategy(
   {
     clientID: process.env.GOOGLE_CLIENT_ID as string,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    callbackURL: "http://localhost:8080/user/auth/google/callback",
+    callbackURL: "http://localhost:8080/auth/google/callback",
     scope: ['email']
   },
   async (accessToken: string, refreshToken: string, profile: Profile, done: DoneCallback)=>{
