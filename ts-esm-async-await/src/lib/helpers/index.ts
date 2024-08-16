@@ -30,20 +30,17 @@ const startScript = {
 
 export const connectionType = () => {
   let connectionChoice: {
-    port: string | number;
     uri: string;
-  } = { port: '', uri: '' };
+  } = {  uri: '' };
 
   if (startScript.atlas) {
     connectionChoice = {
-      port: process.env.PORT_ATLAS as string | number,
       uri: process.env.MONGODB_ATLAS_URI as string,
     };
   }
 
   if (startScript.local) {
     connectionChoice = {
-      port: process.env.PORT_LOCAL as string | number,
       uri: process.env.MONGODB_LOCAL_URI as string,
     };
   }

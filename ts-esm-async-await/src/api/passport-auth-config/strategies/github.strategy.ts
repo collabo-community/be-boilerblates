@@ -6,13 +6,16 @@ import { badRequestErr } from '../../../lib/errors/Errors';
 import { success } from '../../../lib/helpers';
 
 import dotenv from 'dotenv';
-dotenv.config();
+import dotenvExpand from 'dotenv-expand';
+
+const dotEnv = dotenv.config();
+dotenvExpand.expand(dotEnv);
 
 export const githubStrategy = new Strategy(
   {
     clientID: process.env.GITHUB_CLIENT_ID as string,
     clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-    callbackURL: "http://localhost:8080/auth/github/callback",
+    callbackURL: `${process.env.BACKEND_URL as string}/auth/github/callback`,
     scope: ['email']
   },
   async (accessToken: string, refreshToken: string, profile: Profile, done: DoneCallback)=>{
