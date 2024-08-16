@@ -5,8 +5,8 @@ import {
   signupOrLoginWithGithubController,
   signupOrLoginWithGoogleController,
 } from '../controllers/auth.controller';
-import { authWithGithub } from '../middlewares/auth.middleware';
-import { authWithGoogle } from '../middlewares/auth.middleware';
+import { authWithGithub } from '../auth/middlewares/auth.middleware';
+import { authWithGoogle } from '../auth/middlewares/auth.middleware';
 
 const router: IRouter = express.Router();
 

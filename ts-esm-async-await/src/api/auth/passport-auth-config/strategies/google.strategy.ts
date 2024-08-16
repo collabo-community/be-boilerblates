@@ -1,9 +1,9 @@
 import {Profile, Strategy} from 'passport-google-oauth20';
-import { UserModel as User } from '../../models/user.model';
+import { UserModel as User } from '../../../models/user.model';
 // import bcrypt from 'bcrypt';
 import { DoneCallback } from 'passport';
-import { badRequestErr } from '../../../lib/errors/Errors';
-import { success } from '../../../lib/helpers';
+import { badRequestErr } from '../../../../lib/errors/Errors';
+import { success } from '../../../../lib/helpers';
 
 import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';

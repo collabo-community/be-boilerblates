@@ -10,7 +10,7 @@ import { router as appRouter } from './api/routes/app.route';
 import { router as demoRouter } from './api/routes/demo.route';
 import { router as authRouter } from './api/routes/auth.route';
 import { router as userRouter } from './api/routes/user.route';
-import { configurePassport } from './api/passport-auth-config/passport.auth.config';
+import { configurePassport } from './api/auth/passport-auth-config/passport.auth.config';
 
 dotenv.config();
 

@@ -1,8 +1,8 @@
 import {Strategy} from 'passport-local';
-import { UserModel as User } from '../../models/user.model';
+import { UserModel as User } from '../../../models/user.model';
 import bcrypt from 'bcrypt';
 import { DoneCallback } from 'passport';
-import { badRequestErr } from '../../../lib/errors/Errors';
+import { badRequestErr } from '../../../../lib/errors/Errors';
 
 export const localLoginStrategy = new Strategy(
   {
