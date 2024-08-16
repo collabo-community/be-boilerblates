@@ -1,8 +1,8 @@
 import { NextFunction, Response } from "express";
 import passport from 'passport';
-import { Payload, ReqUser } from '../../types';
-import { UserRole } from "../models/user.model";
-import { unAuthorizedErr } from '../../lib/errors/Errors';
+import { Payload, ReqUser } from '../../../types';
+import { UserRole } from "../../models/user.model";
+import { unAuthorizedErr } from '../../../lib/errors/Errors';
 
 // -----------------------------------------------------------------------------------------------------------//
 // https://www.sailpoint.com/identity-library/difference-between-authentication-and-authorization/
