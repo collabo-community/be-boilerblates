@@ -58,7 +58,5 @@
   },
   "author": "Collabo Community [Code Collabo]",
   "license": "ISC",
-  "contributors": [
-    "Find list of contributors in project README: https://github.com/collabo-community/backend-api-boilerplates?tab=readme-ov-file#contributors"
-  ]
+  "contributors": ["Find list of contributors in project README: https://github.com/collabo-community/backend-api-boilerplates?tab=readme-ov-file#contributors"]
 }
