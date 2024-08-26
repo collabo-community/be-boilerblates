@@ -46,7 +46,6 @@ export const updateUserPropertyValuesService = async (paramsId: string, requestB
     notFoundErr('No record found for provided ID');
   }
 
-  query.email = requestBody.email;
   query.password = requestBody.password;
 
   const updatedQuery = await query.save();
