@@ -124,10 +124,10 @@ export const createAdminUserController = async (req: ReqUser, res: Response, nex
   try {
     const adminUser = await createAdminUserService();
     if (adminUser) {
-      success(`Admin User Created Successfully`);
+      success(`Your User Document (or Table) Has an Admin User`);
     }
     else {
-      notFoundErr(`No Admin User on Your Database.\nRestart to Create One`)
+      notFoundErr(`No Admin User on Your User Document (or Table).\nRestart to Create One`)
     }
   } catch (err) {
     next(err);
