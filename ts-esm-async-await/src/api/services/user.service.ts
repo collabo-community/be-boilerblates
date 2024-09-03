@@ -1,5 +1,5 @@
 import { badRequestErr, notFoundErr } from '../../lib/errors/Errors';
-import { UserDocument, UserModel as User } from '../models/user.model';
+import { UserDocument, UserModel as User, UserRole } from '../models/user.model';
 
 
 export const getAllUsersService = async () => {
@@ -50,6 +50,16 @@ export const updateUserPropertyValuesService = async (paramsId: string, requestB
 
   const updatedQuery = await query.save();
   return updatedQuery;
+};
+
+export const createAdminUserService = async () => {
+  const createAdminUser = new User({
+    email: "admin@admin.com",
+    password: "admin",
+    role: UserRole.Admin,
+  });
+  const adminUser = await createAdminUser.save();
+  return adminUser;
 };
 
 
