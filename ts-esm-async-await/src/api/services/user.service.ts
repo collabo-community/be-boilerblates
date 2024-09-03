@@ -53,15 +53,17 @@ export const updateUserPropertyValuesService = async (paramsId: string, requestB
 };
 
 export const createAdminUserService = async () => {
-  const createAdminUser = new User({
-    email: "admin@admin.com",
-    password: "admin",
-    role: UserRole.Admin,
-  });
-  const adminUser = await createAdminUser.save();
+  let adminUser = await User.findOne({ role: UserRole.Admin }).exec();
+  if (!adminUser) {
+    const createAdminUser = new User({
+      email: "admin@admin.com",
+      password: "admin",
+      role: UserRole.Admin,
+    }); 
+    adminUser = await createAdminUser.save();
+  }
   return adminUser;
 };
-
 
 //--------------------------------------------------------------------------------------------------//
 export const deleteAllUserService = async () => {
