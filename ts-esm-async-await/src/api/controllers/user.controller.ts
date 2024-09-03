@@ -10,6 +10,7 @@ import {
 } from '../services/user.service';
 import { success } from '../../lib/helpers';
 import { ReqUser } from '../../types';
+import { notFoundErr } from '../../lib/errors/Errors';
 
 // const routeName = 'user';
 // const item = `${routeName}-item`;
@@ -121,8 +122,13 @@ export const updateUserPropertyValuesController = async (req: ReqUser, res: Resp
 
 export const createAdminUserController = async (req: ReqUser, res: Response, next: NextFunction) => {
   try {
-    await createAdminUserService();
-    success(`Admin User Created Successfully`);
+    const adminUser = await createAdminUserService();
+    if (adminUser) {
+      success(`Admin User Created Successfully`);
+    }
+    else {
+      notFoundErr(`No Admin User on Your Database.\nRestart to Create One`)
+    }
   } catch (err) {
     next(err);
   }
