@@ -10,7 +10,7 @@ import {
 } from '../services/user.service';
 import { success } from '../../lib/helpers';
 import { ReqUser } from '../../types';
-import { notFoundErr } from '../../lib/errors/Errors';
+import { error } from 'console';
 
 // const routeName = 'user';
 // const item = `${routeName}-item`;
@@ -120,17 +120,17 @@ export const updateUserPropertyValuesController = async (req: ReqUser, res: Resp
   }
 }
 
-export const createAdminUserController = async (req: ReqUser, res: Response, next: NextFunction) => {
+export const createAdminUserController = async () => {
   try {
     const adminUser = await createAdminUserService();
     if (adminUser) {
-      success(`Your User Document (or Table) Has an Admin User`);
+      success(`Your User Document (or Table) Has an Admin User\n`);
     }
     else {
-      notFoundErr(`No Admin User on Your User Document (or Table).\nRestart to Create One`)
+      error(`No Admin User on Your User Document (or Table).\nRestart Server to Create One\n`);
     }
   } catch (err) {
-    next(err);
+    error(err.message);
   }
 }
 
