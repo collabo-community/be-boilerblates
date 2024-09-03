@@ -6,7 +6,7 @@ import {
   updateOneUserPropertyValueService,
   updateUserPropertyValuesService,
   deleteAllUserService,
-  
+  createAdminUserService,
 } from '../services/user.service';
 import { success } from '../../lib/helpers';
 import { ReqUser } from '../../types';
@@ -119,6 +119,14 @@ export const updateUserPropertyValuesController = async (req: ReqUser, res: Resp
   }
 }
 
+export const createAdminUserController = async (req: ReqUser, res: Response, next: NextFunction) => {
+  try {
+    await createAdminUserService();
+    success(`Admin User Created Successfully`);
+  } catch (err) {
+    next(err);
+  }
+}
 
 //------------------------------------------------------------------------------------------//
 export const deleteAllUserController = async (req: Request, res: Response, next: NextFunction) => {
