@@ -3,7 +3,7 @@ import { UserDocument, UserModel as User, UserRole } from '../models/user.model'
 
 
 export const getAllUsersService = async () => {
-  const query = await User.find().exec();
+  const query = await User.find({role:{$ne: UserRole.Admin}}).exec();
   return query;
 };
 
