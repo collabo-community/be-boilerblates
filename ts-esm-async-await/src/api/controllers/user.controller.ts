@@ -123,7 +123,6 @@ export const updateUserPropertyValuesController = async (req: ReqUser, res: Resp
 export const createAdminUserController = async () => {
   try {
     await createAdminUserService();
-    success(`Your User Document (or Table) Has an Admin User\n`);
   } catch (err) {
     error(`ERROR: Could not Find or Create An Admin User\n${err.message}`);
   }
