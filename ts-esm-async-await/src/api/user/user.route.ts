@@ -6,8 +6,8 @@ import {
   updateOneUserPropertyValueController,
   updateUserPropertyValuesController,
   deleteAllUserController,
-} from '../controllers/user.controller';
-import { UserRole } from '../models/user.model';
+} from './user.controller';
+import { UserRole } from './user.model';
 import { authenticateUserWithJWT, authorizeByUserRoles } from '../auth/middlewares/auth.middleware';
 
 const router: IRouter = express.Router();

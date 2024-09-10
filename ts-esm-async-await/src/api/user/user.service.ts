@@ -1,5 +1,5 @@
 import { badRequestErr, notFoundErr } from '../../lib/errors/Errors';
-import { UserDocument, UserModel as User, UserRole } from '../models/user.model';
+import { UserDocument, UserModel as User, UserRole } from './user.model';
 
 
 export const getAllUsersService = async () => {
