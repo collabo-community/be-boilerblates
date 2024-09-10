@@ -1,5 +1,5 @@
 import express, { IRouter } from 'express';
-import { getAppController } from '../controllers/app.controller';
+import { getAppController } from './app.controller';
 
 const router: IRouter = express.Router();
 
