@@ -5,10 +5,10 @@ import cors from 'cors';
 import { errorHandler } from './lib/errors/ErrorHandler';
 import { CustomErrorInterface } from './lib/errors/CustomError';
 import { notFoundErr } from './lib/errors/Errors';
-import { router as appRouter } from './api/routes/app.route';
-import { router as demoRouter } from './api/routes/demo.route';
-import { router as authRouter } from './api/routes/auth.route';
-import { router as userRouter } from './api/routes/user.route';
+import { router as appRouter } from './api/app.route';
+import { router as demoRouter } from './api/demo/demo.route';
+import { router as authRouter } from './api/auth/api/auth.route';
+import { router as userRouter } from './api/user/user.route';
 import { configurePassport } from './api/auth/passport-auth-config/passport.auth.config';
 
 dotenv.config();
