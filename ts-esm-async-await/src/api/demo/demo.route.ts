@@ -6,7 +6,7 @@ import {
   deleteDemoItemController,
   updateOneDemoItemPropertyValueController,
   updateDemoItemPropertyValuesController,
-} from '../controllers/demo.controller';
+} from './demo.controller';
 
 const router: IRouter = express.Router();
 
