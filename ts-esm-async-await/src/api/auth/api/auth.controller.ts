@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { success } from '../../lib/helpers';
+import { success } from '../../../lib/helpers';
 import passport from 'passport';
-import { UserDocument } from '../models/user.model';
+import { UserDocument } from '../../user/user.model';
 import jwt from 'jsonwebtoken'; 
 import dotenv from 'dotenv';
 dotenv.config();
