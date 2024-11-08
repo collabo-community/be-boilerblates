@@ -7,7 +7,7 @@ import {
   updateUserPropertyValuesService,
   deleteAllUserService,
   createAdminUserService,
-} from '../services/user.service';
+} from './user.service';
 import { success } from '../../lib/helpers';
 import { ReqUser } from '../../types';
 import { error } from 'console';

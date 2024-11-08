@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { connectionType, afterDBconnectSuccessful, connectToDBunsuccessful } from './lib/helpers';
-import { createAdminUserController } from './api/controllers/user.controller';
+import { createAdminUserController } from './api/user/user.controller';
 
 const mongooseConnect = async (port: number | string) => {
   try {

@@ -1,5 +1,5 @@
 import {Strategy} from 'passport-local';
-import { UserModel as User } from '../../../models/user.model';
+import { UserModel as User } from '../../../user/user.model';
 import { DoneCallback } from 'passport';
 
 export const localSignupStrategy = new Strategy(

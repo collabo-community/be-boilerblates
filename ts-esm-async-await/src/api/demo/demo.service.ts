@@ -1,5 +1,5 @@
 import { badRequestErr, notFoundErr } from '../../lib/errors/Errors';
-import { DemoDocument, DemoModel as Demo } from '../models/demo.model';
+import { DemoDocument, DemoModel as Demo } from './demo.model';
 
 export const getDemoItemsService = async () => {
   const query = await Demo.find().select('_id name age').exec();

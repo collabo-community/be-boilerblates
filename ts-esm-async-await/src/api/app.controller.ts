@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { success } from '../../lib/helpers';
+import { success } from '../lib/helpers';
 
 export const getAppController = async (req: Request, res: Response) => {
   const message = 'App works!';

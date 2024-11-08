@@ -6,7 +6,7 @@ import {
   deleteDemoItemService,
   updateOneDemoItemPropertyValueService,
   updateDemoItemPropertyValuesService,
-} from '../services/demo.service';
+} from './demo.service';
 import { success } from '../../lib/helpers';
 
 const routeName = 'demo';

@@ -1,6 +1,6 @@
 
 import {Profile, Strategy} from 'passport-github2';
-import { UserModel as User } from '../../../models/user.model';
+import { UserModel as User } from '../../../user/user.model';
 import { DoneCallback } from 'passport';
 import { badRequestErr } from '../../../../lib/errors/Errors';
 import { success } from '../../../../lib/helpers';
