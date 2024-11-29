@@ -1,5 +1,5 @@
 {
-  "projectName": "backend-api-boilerplates",
+  "projectName": "nodejs-backend-api-boilerplates",
   "projectOwner": "collabo-community",
   "repoType": "github",
   "repoHost": "https://github.com",
@@ -62,6 +62,15 @@
       "name": "Festus Ali",
       "avatar_url": "https://avatars.githubusercontent.com/u/42407804?v=4",
       "profile": "https://festusali.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Akpjunior94",
+      "name": "Akpan Abraham",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56775903?v=4",
+      "profile": "https://github.com/Akpjunior94",
       "contributions": [
         "code"
       ]
