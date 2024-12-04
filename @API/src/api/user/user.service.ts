@@ -57,7 +57,7 @@ export const createAdminUserService = async () => {
   if (!adminUser) {
     const createAdminUser = new User({
       email: "admin@admin.com",
-      password: "admin",
+      password: process.env.ADMIN_USER_PASSWORD as string || "admin",
       role: UserRole.Admin,
     }); 
     adminUser = await createAdminUser.save();
